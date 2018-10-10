@@ -4,10 +4,6 @@
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_item_background_holo_light.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/camera6.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/camera6.png"
-    },
-    {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_textfield_search_material.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_textfield_search_material.xml"
     },
@@ -16,176 +12,8 @@
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_text_cursor_material.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal1.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal1.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix5.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix5.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_cab_background_top_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing3.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing3.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/condition_fault.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/condition_fault.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting6.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting6.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_edit_text_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_edit_text_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_item_background_holo_dark.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_item_background_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/icon_gcoding.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/icon_gcoding.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/distributed_power.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/distributed_power.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_spinner_textfield_background_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_spinner_textfield_background_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/condition_normal.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/condition_normal.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting4.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting4.png"
-    },
-    {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_light.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_holo_light.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/condition_unknown.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/condition_unknown.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fault.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fault.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/camera2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/camera2.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/offline.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/offline.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting1.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting1.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/camera5.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/camera5.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal2.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_dark.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_dialog_material_background_dark.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_dialog_material_background_dark.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix4.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix4.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal5.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal5.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix1.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix1.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/marker_elec2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/marker_elec2.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing5.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing5.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing2.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix2.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/switch_open.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/switch_open.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal4.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal4.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_check_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_check_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing6.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing6.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_colored_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_radio_material.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_radio_material.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_light.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting3.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting3.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_default_mtrl_shape.xml",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_default_mtrl_shape.xml"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing4.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing4.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/online.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/online.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/gaojing1.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/gaojing1.png"
     },
     {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/popup.png",
@@ -196,56 +24,68 @@
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_dialog_material_background_light.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal6.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal6.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix6.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix6.png"
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_cab_background_top_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_cab_background_top_material.xml"
     },
     {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_cab_background_internal_bg.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/normal3.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/normal3.png"
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_check_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_check_material.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/fix3.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/fix3.png"
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_edit_text_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_item_background_holo_dark.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_colored_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_colored_material.xml"
     },
     {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_borderless_material.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_borderless_material.xml"
     },
     {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_dialog_material_background_dark.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_ratingbar_full_material.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_ratingbar_full_material.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/none.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/none.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting2.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting2.png"
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_tab_indicator_material.xml",
         "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_tab_indicator_material.xml"
     },
     {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/camera4.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/camera4.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/switch_close.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/switch_close.png"
-    },
-    {
-        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/setting5.png",
-        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/src/main/res/drawable/setting5.png"
+        "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "/Users/zhanglinfeimacair/workroom/coding/iwos-phone/iwos/node_modules/react-native-baidu-map/android/build/intermediates/res/merged/release/drawable/abc_switch_thumb_material.xml",

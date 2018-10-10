@@ -5,6 +5,7 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 
+
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
@@ -13,16 +14,16 @@ import Geolocation from './Geolocation';
 const _module = NativeModules.BaiduMapModule;
 
 export default {
-  setMarker (lat, lng) {
+  setMarker(lat, lng) {
     console.warn('This method was deprecated, please use MapView prop instead');
   },
-  setMapType (type) {
+  setMapType(type) {
     console.warn('This method was deprecated, please use MapView prop instead');
   },
-  setZoom (zoom) {
+  setZoom(zoom) {
     console.warn('This method was deprecated, please use MapView prop instead');
   },
-  moveToCenter (lat, lng, zoom) {
+  moveToCenter(lat, lng, zoom) {
     console.warn('This method was deprecated, please use MapView prop instead');
   },
   geocode(city, addr) {

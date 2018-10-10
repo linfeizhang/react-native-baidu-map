@@ -1,8 +1,8 @@
 package org.lovebing.reactnative.baidumap;
-import android.os.Bundle; 
+
 import android.util.Log;
 import android.widget.Button;
-import android.support.annotation.Nullable;
+import android.os.Bundle; 
 
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -13,24 +13,11 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.ReadableArray;
-import java.util.ArrayList;
-import java.util.List;
-import com.baidu.mapapi.map.PolylineOptions;
-import com.baidu.mapapi.map.Polyline;
-import com.baidu.mapapi.map.PolygonOptions;
-import com.baidu.mapapi.map.Stroke;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactApplicationContext;
 
 /**
  * Created by lovebing on Sept 28, 2016.
  */
 public class MarkerUtil {
-
-   
 
     public static void updateMaker(Marker maker, ReadableMap option) {
         LatLng position = getLatLngFromOption(option);
@@ -165,7 +152,8 @@ public class MarkerUtil {
                 .icon(bitmap)
                 .position(position)
                 .title(option.getString("title"))
-                .extraInfo(bundle);
+                .perspective(true)//是否开启近大远小效果
+                .extraInfo(bundle);//额外信息
 
 
         Marker marker = (Marker)mapView.getMap().addOverlay(overlayOptions);

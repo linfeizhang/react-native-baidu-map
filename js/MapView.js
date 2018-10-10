@@ -59,27 +59,7 @@ export default class MapView extends Component {
       this.props[event.nativeEvent.type](event.nativeEvent.params);
     }
   }
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-  componentDidCatch() {
-    console.log('componentDidCatch');
-  }
-  componentWillUpdate() {
-    console.log('componentWillUpdate');
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
+
   render() {
     return <BaiduMapView {...this.props} onChange={this._onChange.bind(this)} />;
   }

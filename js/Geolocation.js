@@ -5,6 +5,7 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 
+
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
@@ -75,10 +76,10 @@ export default {
         }, (error) => {
           reject(error);
         }, {
-          enableHighAccuracy: true,
-          timeout: 20000,
-          maximumAge: 1000
-        });
+            enableHighAccuracy: true,
+            timeout: 20000,
+            maximumAge: 1000
+          });
       });
     }
     return new Promise((resolve, reject) => {
