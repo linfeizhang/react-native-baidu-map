@@ -40,6 +40,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.baidu.mapapi.map.MarkerOptions;
 
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -147,7 +148,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                         break;
                     }
             }
-            float zoom = i+4;
+            float zoom = i+5;
 
             MapStatus mapStatus = new MapStatus.Builder().zoom(zoom).build();
             MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
@@ -186,13 +187,153 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name="markers")
         public void setMarkers(MapView mapView, ReadableArray options) {
             if(options != null) {
+                // mapView.getMap().clean();
+                List<OverlayOptions> OverlayOptions = new ArrayList<>();
                 for (int i = 0; i < options.size(); i++) {
                     ReadableMap option = options.getMap(i);
-                    MarkerUtil.addMarker(mapView, option);
+                    // Marker marder = MarkerUtil.addMarker(mapView, option);
+                    int type = option.getInt("type"); 
+                    int state = option.getInt("state");
+                    int online = option.getInt("online");
+                    int hasDevice = option.getInt("hasDevice");
+                    int flag = option.getInt("flag");
+                    double condition = option.getDouble("condition");
+                    int businessState = option.getInt("businessState");
+                    BitmapDescriptor bitmap = null;
+
+                    if(type == 10){//变电站
+                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.marker_elec2);
+                    }else {
+                        if(hasDevice == 1){
+                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.none);
+                        }else if(type == 11 || type == 15 || type == 16){
+                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.switch_close);
+                        }else if(type == 17){
+                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.distributed_power);
+                        }else{
+                            switch(businessState){
+                                case 1 : 
+                                    if(online == 1){
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal1);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal2);
+                                        }
+                                    }else{
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal3);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal4);
+                                        }
+                                    }
+                                break;
+                                case 0 : 
+                                    if(online == 1){
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting1);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting2);
+                                        }
+                                    }else{
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting3);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting4);
+                                        }
+                                    }
+                                break;
+                                case 3 : 
+                                    if(online == 1){
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix1);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix2);
+                                        }
+                                    }else{
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix3);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix4);
+                                        }
+                                    }
+                                break;
+                                case 2 : 
+                                    if(online == 1){
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing1);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing2);
+                                        }
+                                    }else{
+                                        if(condition != 11002 && condition != 0){
+                                            if(flag == 1){
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
+                                            }else{
+                                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing3);
+                                            }
+                                        }else{
+                                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing4);
+                                        }
+                                    }
+                                break;
+                            }
+                        }
+                    }
+                    
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("index",option.getInt("index"));
+                    bundle.putInt("section",option.getInt("section"));
+                    bundle.putInt("flag",option.getInt("flag"));
+                    bundle.putInt("type",option.getInt("type"));
+                    LatLng position = getLatLngFromOption(option);
+                    OverlayOptions overlayOption = new MarkerOptions()
+                            .icon(bitmap)
+                            .position(position)
+                            .title(option.getString("title"))
+                            .perspective(true)//是否开启近大远小效果
+                            .extraInfo(bundle);//额外信息
+                    OverlayOptions.add(overlayOption);
+                    Marker marker = (Marker)mapView.getMap().addOverlay(overlayOption);
+
                 }
+                // mapView.getMap().addOverlays(OverlayOptions);
             }
             
         }
+        private static LatLng getLatLngFromOption(ReadableMap option) {
+        double latitude = option.getDouble("latitude");
+        double longitude = option.getDouble("longitude");
+        return new LatLng(latitude, longitude);
+
+    }
     // @ReactProp(name="markers")
     // public void setMarkers(MapView mapView, ReadableArray options) {
     //    for (int i = 0; i < options.size(); i++) {
@@ -203,7 +344,6 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     //         else {
     //             mMarkers.add(i, MarkerUtil.addMarker(mapView, option));
     //         }
-    //         mMarkers.add(i, MarkerUtil.addMarker(mapView, option));
     //     }
     //     if(options.size() < mMarkers.size()) {
     //         int start = options.size();
@@ -254,13 +394,13 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 if(Integer.parseInt(flag) == 0){//红色线
                     OverlayOptions ooPolyline = new PolylineOptions()
                         .points(pts)
-                        .width(10)
+                        .width(6)
                         .color(0xFFFF0000);
                     mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline); 
                 }else{
                     OverlayOptions ooPolyline = new PolylineOptions()
                         .points(pts)
-                        .width(10)
+                        .width(6)
                         .color(0xFF4682B4);
                     mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline); 
                 }
