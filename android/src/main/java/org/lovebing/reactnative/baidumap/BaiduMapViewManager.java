@@ -186,7 +186,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     // 添加markers
     @ReactProp(name="markers")
         public void setMarkers(MapView mapView, ReadableArray options) {
-            if(options != null) {
+            if(options != null && options.size() > 0) {
                 // mapView.getMap().clean();
                 List<OverlayOptions> OverlayOptions = new ArrayList<>();
                 for (int i = 0; i < options.size(); i++) {
@@ -355,7 +355,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     // }
 @ReactProp(name = "polyline")
     public void setPolyline(MapView mapView, ReadableArray options) {
-        if(options != null){
+        if(options != null && options.size() > 0) {
             String linkInfo = "";
             String linkInfos = "";
             for (int i = 0; i < options.size(); i++){
