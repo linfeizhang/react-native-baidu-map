@@ -514,7 +514,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                     double longitude = marker.getPosition().longitude;
                     LatLng position = new LatLng(latitude, longitude);
 
-                    infoWindow = new InfoWindow(textView,position,-110,listener);
+                    infoWindow = new InfoWindow(textView, position, -75, listener);
 
                     
                      if (flag == 1){
