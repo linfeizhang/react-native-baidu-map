@@ -60,6 +60,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     private ReadableArray childrenPoints;
     private HashMap<String, Marker> mMarkerMap = new HashMap<>();
     private HashMap<String, List<Marker>> mMarkersMap = new HashMap<>();
+    private List<OverlayOptions> OverlayOptions = new ArrayList<>();
+    private List<OverlayOptions> OverlayPolylines = new ArrayList<>();
     private List<Marker> mMarkers = new ArrayList<>();
     private TextView mMarkerText;
 
@@ -188,12 +190,11 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "markers")
     public void setMarkers(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            // mapView.getMap().clean();
-            List<OverlayOptions> OverlayOptions = new ArrayList<>();
+            mapView.getMap().clear();
             for (int i = 0; i < options.size(); i++) {
                 ReadableMap option = options.getMap(i);
                 Map optionMap = option.toHashMap();
-                // Marker marder = MarkerUtil.addMarker(mapView, option);
+
                 int type = option.getInt("type");
                 int state = option.getInt("state");
                 int online = option.getInt("online");
@@ -326,7 +327,6 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
                 }
             }
-            // mapView.getMap().addOverlays(OverlayOptions);
         }
 
     }
@@ -402,9 +402,11 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                     if (Integer.parseInt(flag) == 0) {// 红色线
                         OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFFFF0000);
                         mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                        OverlayPolylines.add(ooPolyline);
                     } else {
                         OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFF4682B4);
                         mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                        OverlayPolylines.add(ooPolyline);
                     }
                 }
             }
