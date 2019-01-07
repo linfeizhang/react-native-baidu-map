@@ -154,7 +154,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
             }
             float zoom = i + 5;
 
-            MapStatus mapStatus = new MapStatus.Builder().zoom(zoom).build();
+            MapStatus mapStatus = new MapStatus.Builder().target(latlon).zoom(zoom).build();
             MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
             mapView.getMap().setMapStatus(mapStatusUpdate);
         }
@@ -190,7 +190,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "markers")
     public void setMarkers(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            mapView.getMap().clear();
+            // mapView.getMap().clear();
+            // List<Marker> allOverlay = mapView.getMap().getOverlays();
             for (int i = 0; i < options.size(); i++) {
                 ReadableMap option = options.getMap(i);
                 Map optionMap = option.toHashMap();
