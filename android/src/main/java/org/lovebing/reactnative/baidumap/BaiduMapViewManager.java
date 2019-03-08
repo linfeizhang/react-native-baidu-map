@@ -55,6 +55,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     private static final String REACT_CLASS = "RCTBaiduMapView";
 
+    private static MapView mMapView;
     private ThemedReactContext mReactContext;
 
     private ReadableArray childrenPoints;
@@ -79,9 +80,12 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     public MapView createViewInstance(ThemedReactContext context) {
         mReactContext = context;
-        MapView mapView = new MapView(context);
-        setListeners(mapView);
-        return mapView;
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
+        mMapView = new MapView(context);
+        setListeners(mMapView);
+        return mMapView;
     }
 
     @Override
@@ -218,7 +222,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                         switch (businessState) {
                         case 1:
                             if (online == 1) {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
                                     } else {
@@ -228,20 +232,24 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                     bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal2);
                                 }
                             } else {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
                                     } else {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal3);
                                     }
                                 } else {
-                                    bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal4);
+                                    if (flag == 1) {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal2);
+                                    } else {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal4);
+                                    }
                                 }
                             }
                             break;
                         case 0:
                             if (online == 1) {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
                                     } else {
@@ -251,20 +259,24 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                     bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting2);
                                 }
                             } else {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
                                     } else {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting3);
                                     }
                                 } else {
-                                    bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting4);
+                                    if (flag == 1) {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting2);
+                                    } else {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting4);
+                                    }
                                 }
                             }
                             break;
                         case 3:
                             if (online == 1) {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
                                     } else {
@@ -274,20 +286,24 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                     bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix2);
                                 }
                             } else {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
                                     } else {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix3);
                                     }
                                 } else {
-                                    bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix4);
+                                    if (flag == 1) {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix2);
+                                    } else {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix4);
+                                    }
                                 }
                             }
                             break;
                         case 2:
                             if (online == 1) {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
                                     } else {
@@ -297,14 +313,18 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                     bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing2);
                                 }
                             } else {
-                                if (condition != 11002 && condition != 0) {
+                                if (condition != 11002 && condition != 11001 && condition != 0) {
                                     if (flag == 1) {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
                                     } else {
                                         bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing3);
                                     }
                                 } else {
-                                    bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing4);
+                                    if (flag == 1) {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing2);
+                                    } else {
+                                        bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing4);
+                                    }
                                 }
                             }
                             break;
