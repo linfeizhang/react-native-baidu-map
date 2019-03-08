@@ -462,20 +462,17 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 int flag = marker.getExtraInfo().getInt("flag");
                 int type = marker.getExtraInfo().getInt("type");
                 if (marker.getTitle().length() > 0) {
-
-                    mMarkerText = new TextView(mapView.getContext());
-                    mMarkerText.setBackgroundResource(R.drawable.popup);
-                    mMarkerText.setPadding(32, 32, 32, 32);
-                    mMarkerText.setText(marker.getTitle());
-
-                    textView = BitmapDescriptorFactory.fromView(mMarkerText);
+                    View layout_View = View.inflate(mapView.getContext(), R.layout.activity_main, null);
+                    TextView popTextView = (TextView) layout_View.findViewById(R.id.popTextView);
+                    popTextView.setText(marker.getTitle());
+                    textView = BitmapDescriptorFactory.fromView(layout_View);
                     InfoWindow.OnInfoWindowClickListener listener = null;
 
                     double latitude = marker.getPosition().latitude;
                     double longitude = marker.getPosition().longitude;
                     LatLng position = new LatLng(latitude, longitude);
 
-                    infoWindow = new InfoWindow(textView, position, -75, listener);
+                    infoWindow = new InfoWindow(textView, position, -60, listener);
 
                     if (flag == 1) {
                         mapView.getMap().showInfoWindow(infoWindow);

@@ -14,7 +14,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 
 import com.facebook.react.uimanager.ViewManager;
 
-
 /**
  * Created by lovebing on 4/17/16.
  */
@@ -32,22 +31,16 @@ public class BaiduMapPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(
-                new BaiduMapModule(reactContext),
-                new GeolocationModule(reactContext)
-        );
+        return Arrays.<NativeModule>asList(new BaiduMapModule(reactContext), new GeolocationModule(reactContext));
     }
 
     // @Override
-    public List<ViewManager> createViewManagers(
-            ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(
-                baiduMapViewManager
-        );
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        return Arrays.<ViewManager>asList(baiduMapViewManager);
     }
 
     // @Override
-   public List<Class<? extends JavaScriptModule>> createJSModules() {
-       return Collections.emptyList();
-   }
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
 }
