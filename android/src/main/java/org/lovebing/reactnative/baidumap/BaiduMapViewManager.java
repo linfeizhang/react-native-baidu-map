@@ -180,13 +180,20 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "marker")
     public void setMarker(MapView mapView, ReadableMap option) {
         if (option != null) {
-            String key = "marker_" + mapView.getId();
-            Marker marker = mMarkerMap.get(key);
-            if (marker != null) {
-                MarkerUtil.updateMaker(marker, option);
-            } else {
-                marker = MarkerUtil.addMarker(mapView, option);
-                mMarkerMap.put(key, marker);
+            Map optionMap = option.toHashMap();
+            if (optionMap.containsKey("latitude") && optionMap.containsKey("longitude")) {
+                LatLng position = getLatLngFromOption(option);
+                View layout_View = View.inflate(mapView.getContext(), R.layout.activity_main, null);
+                TextView popTextView = (TextView) layout_View.findViewById(R.id.popTextView);
+                popTextView.setText(option.getString("title"));
+                textView = BitmapDescriptorFactory.fromView(layout_View);
+                InfoWindow.OnInfoWindowClickListener listener = null;
+
+                infoWindow = new InfoWindow(textView, position, -60, listener);
+                mapView.getMap().showInfoWindow(infoWindow);
+                MapStatus mapStatus = new MapStatus.Builder().target(position).build();
+                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
+                mapView.getMap().setMapStatus(mapStatusUpdate);
             }
         }
     }
@@ -208,6 +215,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 int flag = option.getInt("flag");
                 double condition = option.getDouble("condition");
                 int businessState = option.getInt("businessState");
+
                 BitmapDescriptor bitmap = null;
 
                 String imageName = "";
@@ -280,7 +288,21 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                             .extraInfo(bundle);// 额外信息
                     OverlayOptions.add(overlayOption);
                     Marker marker = (Marker) mapView.getMap().addOverlay(overlayOption);
+                    // mMarkers.add(marker);
+                    // if (optionMap.containsKey("isShow")) {
+                    // int isShow = option.getInt("isShow");
+                    // if (isShow == 1) {
+                    // View layout_View = View.inflate(mapView.getContext(), R.layout.activity_main,
+                    // null);
+                    // TextView popTextView = (TextView) layout_View.findViewById(R.id.popTextView);
+                    // popTextView.setText(marker.getTitle());
+                    // textView = BitmapDescriptorFactory.fromView(layout_View);
+                    // InfoWindow.OnInfoWindowClickListener listener = null;
 
+                    // infoWindow = new InfoWindow(textView, position, -60, listener);
+                    // mapView.getMap().showInfoWindow(infoWindow);
+                    // }
+                    // }
                 }
             }
         }
@@ -474,16 +496,17 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
                     infoWindow = new InfoWindow(textView, position, -60, listener);
 
-                    if (flag == 1) {
-                        mapView.getMap().showInfoWindow(infoWindow);
-                    } else {
-                        if (type == 12) {
-                            mapView.getMap().hideInfoWindow();
-                        } else {
-                            mapView.getMap().showInfoWindow(infoWindow);
-                        }
-                    }
+                    // if (flag == 1) {
+                    // mapView.getMap().showInfoWindow(infoWindow);
+                    // } else {
+                    // if (type == 12) {
+                    // mapView.getMap().hideInfoWindow();
+                    // } else {
+                    // mapView.getMap().showInfoWindow(infoWindow);
+                    // }
+                    // }
 
+                    mapView.getMap().showInfoWindow(infoWindow);
                 } else {
                     mapView.getMap().hideInfoWindow();
                 }
@@ -495,13 +518,13 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 writableMap.putString("title", marker.getTitle());
                 writableMap.putInt("index", marker.getExtraInfo().getInt("index"));
                 writableMap.putInt("section", marker.getExtraInfo().getInt("section"));
-                if (flag == 1) {
-                    sendEvent(mapView, "onMarkerClick", writableMap);
-                } else {
-                    if (type == 12) {
-                        sendEvent(mapView, "onMarkerClick", writableMap);
-                    }
-                }
+                // if (flag == 1) {
+                sendEvent(mapView, "onMarkerClick", writableMap);
+                // } else {
+                // if (type == 12) {
+                // sendEvent(mapView, "onMarkerClick", writableMap);
+                // }
+                // }
                 return true;
             }
         });
