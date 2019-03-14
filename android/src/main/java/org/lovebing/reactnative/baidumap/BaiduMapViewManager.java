@@ -82,7 +82,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     public MapView createViewInstance(ThemedReactContext context) {
         mReactContext = context;
         if (mMapView != null) {
-            mMapView.onDestroy();
+            // mMapView.onDestroy();
         }
         mMapView = new MapView(context);
         setListeners(mMapView);
