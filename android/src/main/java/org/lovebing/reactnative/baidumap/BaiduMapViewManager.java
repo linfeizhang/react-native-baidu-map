@@ -65,6 +65,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     private List<OverlayOptions> OverlayOptions = new ArrayList<>();
     private List<OverlayOptions> OverlayPolylines = new ArrayList<>();
     private List<Marker> mMarkers = new ArrayList<>();
+    private List<Polyline> mPolylines = new ArrayList<>();
     private TextView mMarkerText;
 
     private Polyline mMarkerPolyLine;
@@ -288,7 +289,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                             .extraInfo(bundle);// 额外信息
                     OverlayOptions.add(overlayOption);
                     Marker marker = (Marker) mapView.getMap().addOverlay(overlayOption);
-                    // mMarkers.add(marker);
+                    mMarkers.add(marker);
                     // if (optionMap.containsKey("isShow")) {
                     // int isShow = option.getInt("isShow");
                     // if (isShow == 1) {
@@ -338,6 +339,10 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "polyline")
     public void setPolyline(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
+            for (int i = 0; i < mPolylines.size(); i++) {
+                mPolylines.get(i).remove();
+
+            }
             String linkInfo = "";
             String linkInfos = "";
             for (int i = 0; i < options.size(); i++) {
@@ -352,39 +357,62 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
             // ReadableMap position_ = options.getMap(0);
             // String linkInfo = position_.getString("linkInfo");// '0,4;0,3;0,2;0,1;'
             String[] strArray = linkInfos.split(";");
-
+            mPolylines.clear();
             for (int i = 0; i < strArray.length; i++) {
                 String str = strArray[i];// 0,4
                 String[] str_ = str.split(",");
-                String start = str_[0];
-                String end = str_[1];
-                String flag = str_[2];
+                if (str_.length > 2) {
+                    String start = str_[0];
+                    String end = str_[1];
+                    String flag = str_[2];
 
-                List<LatLng> pts = new ArrayList<LatLng>();
+                    List<LatLng> pts = new ArrayList<LatLng>();
+                    int start_ = Integer.parseInt(start);
+                    int end_ = Integer.parseInt(end);
 
-                for (int j = 0; j < options.size(); j++) {
-
-                    ReadableMap position = options.getMap(j);
-                    Map positionMap = position.toHashMap();
-                    if (positionMap.containsKey("latitude") && positionMap.containsKey("longitude")) {
-                        double latitude = position.getDouble("latitude");
-                        double longitude = position.getDouble("longitude");
-                        int link = position.getInt("link");
-                        String links = link + "";
-                        if (links.equals(start) || links.equals(end)) {
-                            pts.add(new LatLng(latitude, longitude));
-                        }
+                    ReadableMap start_position = options.getMap(start_);
+                    Map start_positionMap = start_position.toHashMap();
+                    if (start_positionMap.containsKey("latitude") && start_positionMap.containsKey("longitude")) {
+                        double latitude = start_position.getDouble("latitude");
+                        double longitude = start_position.getDouble("longitude");
+                        pts.add(new LatLng(latitude, longitude));
                     }
-                }
-                if (pts.size() == 2) {
-                    if (Integer.parseInt(flag) == 0) {// 红色线
-                        OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFFFF0000);
-                        mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
-                        OverlayPolylines.add(ooPolyline);
-                    } else {
-                        OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFF4682B4);
-                        mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
-                        OverlayPolylines.add(ooPolyline);
+
+                    ReadableMap end_position = options.getMap(end_);
+                    Map end_positionMap = end_position.toHashMap();
+                    if (end_positionMap.containsKey("latitude") && end_positionMap.containsKey("longitude")) {
+                        double latitude = end_position.getDouble("latitude");
+                        double longitude = end_position.getDouble("longitude");
+                        pts.add(new LatLng(latitude, longitude));
+                    }
+                    // for (int j = 0; j < options.size(); j++) {
+
+                    // ReadableMap position = options.getMap(j);
+                    // Map positionMap = position.toHashMap();
+                    // if (positionMap.containsKey("latitude") &&
+                    // positionMap.containsKey("longitude")) {
+                    // double latitude = position.getDouble("latitude");
+                    // double longitude = position.getDouble("longitude");
+                    // int link = position.getInt("link");
+                    // String links = link + "";
+                    // if (links.equals(start)) {
+                    // pts.add(new LatLng(latitude, longitude));
+                    // }
+                    // if (links.equals(end)) {
+                    // pts.add(new LatLng(latitude, longitude));
+                    // }
+                    // }
+                    // }
+                    if (pts.size() == 2) {
+                        if (Integer.parseInt(flag) == 0) {// 红色线
+                            OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFFFF0000);
+                            mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                            mPolylines.add(mMarkerPolyLine);
+                        } else {
+                            OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFF4682B4);
+                            mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                            mPolylines.add(mMarkerPolyLine);
+                        }
                     }
                 }
             }
