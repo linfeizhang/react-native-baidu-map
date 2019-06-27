@@ -47,32 +47,28 @@ import com.baidu.mapapi.map.MarkerOptions;
 
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.utils.DistanceUtil;
+impor
 
-/**
- * Created by lovebing on 12/20/2015.
+    reated by lovebing on 12/20/2015.
  */
 public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     private static final String REACT_CLASS = "RCTBaiduMapView";
 
-    private static MapView mMapView;
+    private static MapVie mMapView;
     private ThemedReactContext mReactContext;
 
     private ReadableArray childrenPoints;
     private HashMap<String, Marker> mMarkerMap = new HashMap<>();
     private HashMap<String, List<Marker>> mMarkersMap = new HashMap<>();
     private List<OverlayOptions> OverlayOptions = new ArrayList<>();
-    private List<OverlayOptions> OverlayPolylines = new ArrayList<>();
+    privat e List<OverlayOptions> OverlayPolylines = new ArrayList<>();
     private List<Marker> mMarkers = new ArrayList<>();
     private List<Polyline> mPolylines = new ArrayList<>();
-    private TextView mMarkerText;
+    private Te xtView mMarkerText;
 
-    private Polyline mMarkerPolyLine;
-    private InfoWindow infoWindow = null;
-    private BitmapDescriptor textView = null;
-
-    public String getName() {
+    private Polyline mMarkerPolyLine;nfoWindow = null;
+    private BitmapDescriptor textView = null;e() {
         return REACT_CLASS;
     }
 
@@ -84,12 +80,12 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
         mReactContext = context;
         if (mMapView != null) {
             // mMapView.onDestroy();
-        }
+        }  
         mMapView = new MapView(context);
         setListeners(mMapView);
         return mMapView;
     }
-
+  
     @Override
     public void addView(MapView parent, View child, int index) {
         if (childrenPoints != null) {
@@ -99,58 +95,55 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 point.set(item.getInt(0), item.getInt(1));
                 MapViewLayoutParams mapViewLayoutParams = new MapViewLayoutParams.Builder()
                         .layoutMode(MapViewLayoutParams.ELayoutMode.absoluteMode).point(point).build();
-                parent.addView(child, mapViewLayoutParams);
+                par e nt.addView(child, mapViewLayoutParams);
             }
         }
 
     }
 
-    @ReactProp(name = "zoomControlsVisible")
+
+    @ReactProp(name   = "zoomControlsVisible")
     public void setZoomControlsVisible(MapView mapView, boolean zoomControlsVisible) {
-        mapView.showZoomControls(zoomControlsVisible);
+        ma pView.showZoomControls(zoomControlsVisible);
     }
 
     @ReactProp(name = "trafficEnabled")
-    public void setTrafficEnabled(MapView mapView, boolean trafficEnabled) {
-        mapView.getMap().setTrafficEnabled(trafficEnabled);
-    }
+    public void setTrafficEnabled(MapView mapView, booleaap().setTraffi
 
     @ReactProp(name = "baiduHeatMapEnabled")
     public void setBaiduHeatMapEnabled(MapView mapView, boolean baiduHeatMapEnabled) {
         mapView.getMap().setBaiduHeatMapEnabled(baiduHeatMapEnabled);
     }
-
+  
     @ReactProp(name = "mapType")
-    public void setMapType(MapView mapView, int mapType) {
+    public  void setMapType(MapView mapView, int mapType) {
         mapView.getMap().setMapType(mapType);
     }
-
+ 
     @ReactProp(name = "zoom")
-    public void setZoom(MapView mapView, float zoom) {
-        MapStatus mapStatus = new MapStatus.Builder().zoom(zoom).build();
+    public vo tatus mapStatus = new MapStatus.Builder().zoom(zoom).build();
         MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
         mapView.getMap().setMapStatus(mapStatusUpdate);
     }
 
     @ReactProp(name = "zoomlevel")
     public void setzoomlevel(MapView mapView, ReadableMap position) {
-        /*
+        /*  
          * MapStatus mapStatus = new MapStatus.Builder().zoom(zoom).build();
          * MapStatusUpdate mapStatusUpdate = MapStatusUpdateFac
          * tory.newMapStatus(mapStatus); mapView.getMap().setMapStatus(mapStatusUpdate);
-         */
+         * /
         if (position != null) {
             int zoomLevel[] = { 2000000, 1000000, 500000, 200000, 100000, 50000, 25000, 20000, 10000, 5000, 2000, 1000,
                     500, 100, 50, 20, 0 };
 
-            double maxlat = position.getDouble("maxlat");
+            do uble maxlat = position.getDouble("maxlat");
             double minlat = position.getDouble("minlat");
-            double maxlon = position.getDouble("maxlon");
-            double minlon = position.getDouble("minlon");
+            d double minlon = position.getDouble("minlon");
 
             final double midlat = (maxlat + minlat) / 2;
             final double midlon = (maxlon + minlon) / 2;
-            LatLng latlon = new LatLng(midlat, midlon);
+             LatLng latlon = new LatLng(midlat, midlon);
             int jl = (int) DistanceUtil.getDistance(new LatLng(maxlat, maxlon), new LatLng(minlat, minlon));
             int i;
             for (i = 0; i < 17; i++) {
@@ -173,7 +166,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
             double longitude = position.getDouble("longitude");
             LatLng point = new LatLng(latitude, longitude);
             MapStatus mapStatus = new MapStatus.Builder().target(point).build();
-            MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
+             MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
             mapView.getMap().setMapStatus(mapStatusUpdate);
         }
     }
@@ -192,7 +185,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
                 infoWindow = new InfoWindow(textView, position, -60, listener);
                 mapView.getMap().showInfoWindow(infoWindow);
-                MapStatus mapStatus = new MapStatus.Builder().target(position).build();
+                MapStatus mapStatus = new MapStatus.Builder().target(position).zoom(20).build();
                 MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
                 mapView.getMap().setMapStatus(mapStatusUpdate);
             }
@@ -203,7 +196,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "markers")
     public void setMarkers(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            // mapView.getMap().clear();
+            // map View.getMap().clear();
             // List<Marker> allOverlay = mapView.getMap().getOverlays();
             for (int i = 0; i < options.size(); i++) {
                 ReadableMap option = options.getMap(i);
@@ -251,13 +244,12 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                 } else {
                                     imageName = imageName + "1";
                                 }
-                            } else {
+                             } else {
                                 imageName = imageName + "2";
                             }
                         } else {
                             if (condition != 11002 && condition != 11001 && condition != 0) {
-                                if (flag == 1) {
-                                    imageName = imageName + "5";
+                                      imageName = imageName + "5";
                                 } else {
                                     imageName = imageName + "3";
                                 }
@@ -282,11 +274,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 bundle.putInt("flag", option.getInt("flag"));
                 bundle.putInt("type", option.getInt("type"));
 
-                if (optionMap.containsKey("latitude") && optionMap.containsKey("longitude")) {
-                    LatLng position = getLatLngFromOption(option);
-                    OverlayOptions overlayOption = new MarkerOptions().icon(bitmap).position(position)
-                            .title(option.getString("title")).perspective(true)// 是否开启近大远小效果
-                            .extraInfo(bundle);// 额外信息
+                if (o    LatLng position = getLatLngFrom    OverlayOptions overlayOpti     .title(o     .extraInfo(bundle);// 额外信息
                     OverlayOptions.add(overlayOption);
                     Marker marker = (Marker) mapView.getMap().addOverlay(overlayOption);
                     mMarkers.add(marker);
