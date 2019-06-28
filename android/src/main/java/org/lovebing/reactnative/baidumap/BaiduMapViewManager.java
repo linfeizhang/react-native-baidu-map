@@ -203,8 +203,10 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "markers")
     public void setMarkers(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            // mapView.getMap().clear();
-            // List<Marker> allOverlay = mapView.getMap().getOverlays();
+            for (int i = 0; i < mMarkers.size(); i++) {
+                mMarkers.get(i).remove();
+
+            }
             for (int i = 0; i < options.size(); i++) {
                 ReadableMap option = options.getMap(i);
                 Map optionMap = option.toHashMap();
@@ -249,9 +251,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                                 if (flag == 1) {
                                     imageName = imageName + "5";
                                 } else {
-           
-
-                            }
+                                    imageName = imageName + "1";
+                                }
                             } else {
                                 imageName = imageName + "2";
                             }
@@ -291,20 +292,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                     OverlayOptions.add(overlayOption);
                     Marker marker = (Marker) mapView.getMap().addOverlay(overlayOption);
                     mMarkers.add(marker);
-                    // if (optionMap.containsKey("isShow")) {
-                    // int isShow = option.getInt("isShow");
-                    // if (isShow == 1) {
-                    // View layout_View = View.inflate(mapView.getContext(), R.layout.activity_main,
-                    // null);
-                    // TextView popTextView = (TextView) layout_View.findViewById(R.id.popTextView);
-                    // popTextView.setText(marker.getTitle());
-                    // textView = BitmapDescriptorFactory.fromView(layout_View);
-                    // InfoWindow.OnInfoWindowClickListener listener = null;
 
-                    // infoWindow = new InfoWindow(textView, position, -60, listener);
-                    // mapView.getMap().showInfoWindow(infoWindow);
-                    // }
-                    // }
                 }
             }
         }
