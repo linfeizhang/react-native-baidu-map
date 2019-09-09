@@ -1,5 +1,6 @@
 package org.lovebing.reactnative.baidumap;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Button;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.facebook.react.bridge.ReadableMap;
  * Created by lovebing on Sept 28, 2016.
  */
 public class MarkerUtil {
-    public static void updateMaker(Marker maker, ReadableMap option) {
+    public static void updateMaker(Marker maker, ReadableMap option, Context ctx) {
         int type = option.getInt("type");
         int state = option.getInt("state");
         int online = option.getInt("online");
@@ -26,114 +27,63 @@ public class MarkerUtil {
         int flag = option.getInt("flag");
         double condition = option.getDouble("condition");
         int businessState = option.getInt("businessState");
-        BitmapDescriptor bitmap = null;
 
+        BitmapDescriptor bitmap = null;
+        String imageName = "";
         if (type == 10) {// 变电站
-            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.marker_elec2);
+            imageName = "marker_elec2";
         } else {
             if (hasDevice == 1) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.none);
+                imageName = "none";
             } else if (type == 11 || type == 15 || type == 16) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.switch_close);
+                imageName = "switch_close";
             } else if (type == 17) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.distributed_power);
+                imageName = "distributed_power";
             } else {
                 switch (businessState) {
                 case 1:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal4);
-                        }
-                    }
+                    imageName = "normal";
                     break;
                 case 0:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting4);
-                        }
-                    }
+                    imageName = "setting";
                     break;
                 case 3:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix4);
-                        }
-                    }
+                    imageName = "fix";
                     break;
                 case 2:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing1);
-                            }
+                    imageName = "gaojing";
+                    break;
+                }
+                if (online == 1) {
+                    if (condition != 11002 && condition != 11001 && condition != 0) {
+                        if (flag == 1) {
+                            imageName = imageName + "5";
                         } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing2);
+                            imageName = imageName + "1";
                         }
                     } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing3);
-                            }
+                        imageName = imageName + "2";
+                    }
+                } else {
+                    if (condition != 11002 && condition != 11001 && condition != 0) {
+                        if (flag == 1) {
+                            imageName = imageName + "5";
                         } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing4);
+                            imageName = imageName + "3";
+                        }
+                    } else {
+                        if (flag == 1) {
+                            imageName = imageName + "2";
+                        } else {
+                            imageName = imageName + "4";
                         }
                     }
-                    break;
                 }
             }
         }
+
+        int resId = ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
+        bitmap = BitmapDescriptorFactory.fromResource(resId);
 
         Bundle bundle = new Bundle();
         bundle.putInt("index", option.getInt("index"));
@@ -164,114 +114,64 @@ public class MarkerUtil {
         int flag = option.getInt("flag");
         double condition = option.getDouble("condition");
         int businessState = option.getInt("businessState");
-        BitmapDescriptor bitmap = null;
 
+        Context ctx = mapView.getContext();
+        BitmapDescriptor bitmap = null;
+        String imageName = "";
         if (type == 10) {// 变电站
-            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.marker_elec2);
+            imageName = "marker_elec2";
         } else {
             if (hasDevice == 1) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.none);
+                imageName = "none";
             } else if (type == 11 || type == 15 || type == 16) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.switch_close);
+                imageName = "switch_close";
             } else if (type == 17) {
-                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.distributed_power);
+                imageName = "distributed_power";
             } else {
                 switch (businessState) {
                 case 1:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.normal4);
-                        }
-                    }
+                    imageName = "normal";
                     break;
                 case 0:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.setting4);
-                        }
-                    }
+                    imageName = "setting";
                     break;
                 case 3:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix1);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix2);
-                        }
-                    } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix3);
-                            }
-                        } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.fix4);
-                        }
-                    }
+                    imageName = "fix";
                     break;
                 case 2:
-                    if (online == 1) {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing1);
-                            }
+                    imageName = "gaojing";
+                    break;
+                }
+                if (online == 1) {
+                    if (condition != 11002 && condition != 11001 && condition != 0) {
+                        if (flag == 1) {
+                            imageName = imageName + "5";
                         } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing2);
+                            imageName = imageName + "1";
                         }
                     } else {
-                        if (condition != 11002 && condition != 0) {
-                            if (flag == 1) {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing5);
-                            } else {
-                                bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing3);
-                            }
+                        imageName = imageName + "2";
+                    }
+                } else {
+                    if (condition != 11002 && condition != 11001 && condition != 0) {
+                        if (flag == 1) {
+                            imageName = imageName + "5";
                         } else {
-                            bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.gaojing4);
+                            imageName = imageName + "3";
+                        }
+                    } else {
+                        if (flag == 1) {
+                            imageName = imageName + "2";
+                        } else {
+                            imageName = imageName + "4";
                         }
                     }
-                    break;
                 }
             }
         }
+
+        int resId = ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
+        bitmap = BitmapDescriptorFactory.fromResource(resId);
 
         Bundle bundle = new Bundle();
         bundle.putInt("index", option.getInt("index"));

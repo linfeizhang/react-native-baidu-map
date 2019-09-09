@@ -2,23 +2,29 @@ package org.lovebing.reactnative.baidumap;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.os.Bundle;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.MapViewLayoutParams;
 import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.Polyline;
+import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
@@ -32,22 +38,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.lang.reflect.Field;
-
-import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.map.PolylineOptions;
-import com.baidu.mapapi.map.Polyline;
-import com.baidu.mapapi.map.PolygonOptions;
-import com.baidu.mapapi.map.Stroke;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.baidu.mapapi.map.MarkerOptions;
-
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.utils.DistanceUtil;
 
 /**
  * Created by lovebing on 12/20/2015.
@@ -62,6 +52,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     private ReadableArray childrenPoints;
     private HashMap<String, Marker> mMarkerMap = new HashMap<>();
     private HashMap<String, List<Marker>> mMarkersMap = new HashMap<>();
+    private HashMap<String, List<Polyline>> polylinesMap = new HashMap<>();
     private List<OverlayOptions> OverlayOptions = new ArrayList<>();
     private List<OverlayOptions> OverlayPolylines = new ArrayList<>();
     private List<Marker> mMarkers = new ArrayList<>();
@@ -203,100 +194,35 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "markers")
     public void setMarkers(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            for (int i = 0; i < mMarkers.size(); i++) {
-                mMarkers.get(i).remove();
-
+            Context ctx = mapView.getContext();
+            String key = "markers_" + mapView.getId();
+            List<Marker> markers = mMarkersMap.get(key);
+            if (markers == null) {
+                markers = new ArrayList<>();
             }
             for (int i = 0; i < options.size(); i++) {
                 ReadableMap option = options.getMap(i);
                 Map optionMap = option.toHashMap();
-
-                int type = option.getInt("type");
-                int state = option.getInt("state");
-                int online = option.getInt("online");
-                int hasDevice = option.getInt("hasDevice");
-                int flag = option.getInt("flag");
-                double condition = option.getDouble("condition");
-                int businessState = option.getInt("businessState");
-
-                BitmapDescriptor bitmap = null;
-
-                String imageName = "";
-                if (type == 10) {// 变电站
-                    imageName = "marker_elec2";
-                } else {
-                    if (hasDevice == 1) {
-                        imageName = "none";
-                    } else if (type == 11 || type == 15 || type == 16) {
-                        imageName = "switch_close";
-                    } else if (type == 17) {
-                        imageName = "distributed_power";
-                    } else {
-                        switch (businessState) {
-                        case 1:
-                            imageName = "normal";
-                            break;
-                        case 0:
-                            imageName = "setting";
-                            break;
-                        case 3:
-                            imageName = "fix";
-                            break;
-                        case 2:
-                            imageName = "gaojing";
-                            break;
-                        }
-                        if (online == 1) {
-                            if (condition != 11002 && condition != 11001 && condition != 0) {
-                                if (flag == 1) {
-                                    imageName = imageName + "5";
-                                } else {
-                                    imageName = imageName + "1";
-                                }
-                            } else {
-                                imageName = imageName + "2";
-                            }
-                        } else {
-                            if (condition != 11002 && condition != 11001 && condition != 0) {
-                                if (flag == 1) {
-                                    imageName = imageName + "5";
-                                } else {
-                                    imageName = imageName + "3";
-                                }
-                            } else {
-                                if (flag == 1) {
-                                    imageName = imageName + "2";
-                                } else {
-                                    imageName = imageName + "4";
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Context ctx = mapView.getContext();
-                int resId = ctx.getResources().getIdentifier(imageName, "mipmap", ctx.getPackageName());
-                bitmap = BitmapDescriptorFactory.fromResource(resId);
-
-                Bundle bundle = new Bundle();
-                bundle.putInt("index", option.getInt("index"));
-                bundle.putInt("section", option.getInt("section"));
-                bundle.putInt("flag", option.getInt("flag"));
-                bundle.putInt("type", option.getInt("type"));
-
                 if (optionMap.containsKey("latitude") && optionMap.containsKey("longitude")) {
-                    LatLng position = getLatLngFromOption(option);
-                    OverlayOptions overlayOption = new MarkerOptions().icon(bitmap).position(position)
-                            .title(option.getString("title")).perspective(true)// 是否开启近大远小效果
-                            .extraInfo(bundle);// 额外信息
-                    OverlayOptions.add(overlayOption);
-                    Marker marker = (Marker) mapView.getMap().addOverlay(overlayOption);
-                    mMarkers.add(marker);
-
+                    if (markers.size() > i + 1 && markers.get(i) != null) {
+                        MarkerUtil.updateMaker(markers.get(i), option, ctx);
+                    } else {
+                        markers.add(i, MarkerUtil.addMarker(mapView, option));
+                    }
+                } else {
+                    markers.add(i, null);
                 }
             }
+            if (options.size() < markers.size()) {
+                int start = markers.size() - 1;
+                int end = options.size();
+                for (int i = start; i >= end; i--) {
+                    markers.get(i).remove();
+                    markers.remove(i);
+                }
+            }
+            mMarkersMap.put(key, markers);
         }
-
     }
 
     private static LatLng getLatLngFromOption(ReadableMap option) {
@@ -328,10 +254,13 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     @ReactProp(name = "polyline")
     public void setPolyline(MapView mapView, ReadableArray options) {
         if (options != null && options.size() > 0) {
-            for (int i = 0; i < mPolylines.size(); i++) {
-                mPolylines.get(i).remove();
-
+            Context ctx = mapView.getContext();
+            String key = "polylines_" + mapView.getId();
+            List<Polyline> polylines = polylinesMap.get(key);
+            if (polylines == null) {
+                polylines = new ArrayList<>();
             }
+
             String linkInfo = "";
             String linkInfos = "";
             for (int i = 0; i < options.size(); i++) {
@@ -343,10 +272,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                     linkInfos = linkInfos + position_.getString("linkInfo");
                 }
             }
-            // ReadableMap position_ = options.getMap(0);
-            // String linkInfo = position_.getString("linkInfo");// '0,4;0,3;0,2;0,1;'
+
             String[] strArray = linkInfos.split(";");
-            mPolylines.clear();
             for (int i = 0; i < strArray.length; i++) {
                 String str = strArray[i];// 0,4
                 String[] str_ = str.split(",");
@@ -374,38 +301,131 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                         double longitude = end_position.getDouble("longitude");
                         pts.add(new LatLng(latitude, longitude));
                     }
-                    // for (int j = 0; j < options.size(); j++) {
-
-                    // ReadableMap position = options.getMap(j);
-                    // Map positionMap = position.toHashMap();
-                    // if (positionMap.containsKey("latitude") &&
-                    // positionMap.containsKey("longitude")) {
-                    // double latitude = position.getDouble("latitude");
-                    // double longitude = position.getDouble("longitude");
-                    // int link = position.getInt("link");
-                    // String links = link + "";
-                    // if (links.equals(start)) {
-                    // pts.add(new LatLng(latitude, longitude));
-                    // }
-                    // if (links.equals(end)) {
-                    // pts.add(new LatLng(latitude, longitude));
-                    // }
-                    // }
-                    // }
                     if (pts.size() == 2) {
-                        if (Integer.parseInt(flag) == 0) {// 红色线
-                            OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFFFF0000);
-                            mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
-                            mPolylines.add(mMarkerPolyLine);
+                        if (polylines.size() > i + 1 && polylines.get(i) != null) {
+                            if (Integer.parseInt(flag) == 0) {// 红色线
+                                // OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6)
+                                // .color(0xFFFF0000);
+                                // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                                // polylines.add(i, (Polyline) mapView.getMap().addOverlay(ooPolyline));
+                                polylines.get(i).setPoints(pts);
+                                polylines.get(i).setColor(0xFFFF0000);
+                            } else {
+                                // OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6)
+                                // .color(0xFF4682B4);
+                                // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                                // polylines.add(i, (Polyline) mapView.getMap().addOverlay(ooPolyline));
+                                polylines.get(i).setPoints(pts);
+                                polylines.get(i).setColor(0xFF4682B4);
+                            }
                         } else {
-                            OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6).color(0xFF4682B4);
-                            mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
-                            mPolylines.add(mMarkerPolyLine);
+                            if (Integer.parseInt(flag) == 0) {// 红色线
+                                OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6)
+                                        .color(0xFFFF0000);
+                                // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                                polylines.add(i, (Polyline) mapView.getMap().addOverlay(ooPolyline));
+                            } else {
+                                OverlayOptions ooPolyline = new PolylineOptions().points(pts).width(6)
+                                        .color(0xFF4682B4);
+                                // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+                                polylines.add(i, (Polyline) mapView.getMap().addOverlay(ooPolyline));
+                            }
                         }
+                    } else {
+                        polylines.add(i, null);
                     }
                 }
             }
+            // for (int i = 0; i < options.size(); i++) {
+            // ReadableMap option = options.getMap(i);
+            // Map optionMap = option.toHashMap();
+            // if (optionMap.containsKey("latitude") && optionMap.containsKey("longitude"))
+            // {
+            // if (polylines.size() > i + 1 && polylines.get(i) != null) {
+            // MarkerUtil.updateMaker(polylines.get(i), option, ctx);
+            // } else {
+            // polylines.add(i, MarkerUtil.addMarker(mapView, option));
+            // }
+            // }else{
+            // polylines.add(i, null);
+            // }
+            // }
+            if (options.size() < polylines.size()) {
+                int start = polylines.size() - 1;
+                int end = options.size();
+                for (int i = start; i >= end; i--) {
+                    polylines.get(i).remove();
+                    polylines.remove(i);
+                }
+            }
+            polylinesMap.put(key, polylines);
         }
+
+        // if (options != null && options.size() > 0) {
+
+        // for (int i = 0; i < mPolylines.size(); i++) {
+        // mPolylines.get(i).remove();
+
+        // }
+        // String linkInfo = "";
+        // String linkInfos = "";
+        // for (int i = 0; i < options.size(); i++) {
+        // ReadableMap position_ = options.getMap(i);
+        // if (linkInfo.equals(position_.getString("linkInfo"))) {
+
+        // } else {
+        // linkInfo = position_.getString("linkInfo");
+        // linkInfos = linkInfos + position_.getString("linkInfo");
+        // }
+        // }
+        // // ReadableMap position_ = options.getMap(0);
+        // // String linkInfo = position_.getString("linkInfo");// '0,4;0,3;0,2;0,1;'
+        // String[] strArray = linkInfos.split(";");
+        // for (int i = 0; i < strArray.length; i++) {
+        // String str = strArray[i];// 0,4
+        // String[] str_ = str.split(",");
+        // if (str_.length > 2) {
+        // String start = str_[0];
+        // String end = str_[1];
+        // String flag = str_[2];
+
+        // List<LatLng> pts = new ArrayList<LatLng>();
+        // int start_ = Integer.parseInt(start);
+        // int end_ = Integer.parseInt(end);
+
+        // ReadableMap start_position = options.getMap(start_);
+        // Map start_positionMap = start_position.toHashMap();
+        // if (start_positionMap.containsKey("latitude") &&
+        // start_positionMap.containsKey("longitude")) {
+        // double latitude = start_position.getDouble("latitude");
+        // double longitude = start_position.getDouble("longitude");
+        // pts.add(new LatLng(latitude, longitude));
+        // }
+
+        // ReadableMap end_position = options.getMap(end_);
+        // Map end_positionMap = end_position.toHashMap();
+        // if (end_positionMap.containsKey("latitude") &&
+        // end_positionMap.containsKey("longitude")) {
+        // double latitude = end_position.getDouble("latitude");
+        // double longitude = end_position.getDouble("longitude");
+        // pts.add(new LatLng(latitude, longitude));
+        // }
+        // if (pts.size() == 2) {
+        // if (Integer.parseInt(flag) == 0) {// 红色线
+        // OverlayOptions ooPolyline = new
+        // PolylineOptions().points(pts).width(6).color(0xFFFF0000);
+        // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+        // mPolylines.add(mMarkerPolyLine);
+        // } else {
+        // OverlayOptions ooPolyline = new
+        // PolylineOptions().points(pts).width(6).color(0xFF4682B4);
+        // mMarkerPolyLine = (Polyline) mapView.getMap().addOverlay(ooPolyline);
+        // mPolylines.add(mMarkerPolyLine);
+        // }
+        // }
+        // }
+        // }
+        // }
     }
 
     @ReactProp(name = "childrenPoints")
